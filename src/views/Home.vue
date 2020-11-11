@@ -1,94 +1,70 @@
 <template>
-  <v-app id="inspire">
   <v-card>
     <v-card-title>
       <v-text-field
         v-model="search"
         append-icon="mdi-magnify"
-        label="Search"
+        label="Поиск"
         single-line
         hide-details
       ></v-text-field>
+      <v-select
+        v-model="sportType"
+        :items="sportTypes"
+        label="Вид спорта"
+        hide-details
+      ></v-select>
     </v-card-title>
     <v-data-table
       :headers="headers"
       :items="students"
       :search="search"
+      item-ley="student"
     ></v-data-table>
   </v-card>
-  </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { students as studentsData } from './../data/students'
 
 @Component({
   components: {
   },
 })
 export default class Home extends Vue {
+  sportType = ''
+  sportTypes = ['Любой', 'Футбол', 'Рукабол']
   search = ''
-  headers = [
-    {
-      text: 'ФИО',
-      align: 'start',
-      sortable: false,
-      value: 'student',
-    },
-    { text: 'Дата рождения', value: 'dateOfBirth' },
-    { text: 'Вид спорта', value: 'sportType' },
-    { text: 'Квалификация', value: 'qualification' },
-    { text: 'Специализация', value: 'specification' },
-    { text: 'Дата обследования', value: 'dateOfExamination' },
-    { text: 'Место обследования', value: 'placeOfExamination' },
-  ]
+  students = studentsData
 
-  students = [
-    {
-      student: 'Зубенко Михаил Петрович',
-      dateOfBirth: '14/12/1999',
-      sportType: 'Футбол',
-      qualification: '1-й разряд',
-      specification: 'футбол',
-      dateOfExamination: '21.11.2020',
-      placeOfExamination: 'Медицинский центр "Волна"',
-    },
-    {
-      student: 'Зубенко Михаил Петрович',
-      dateOfBirth: '14/12/1999',
-      sportType: 'Рукабол',
-      qualification: '1-й разряд',
-      specification: 'футбол',
-      dateOfExamination: '21.11.2020',
-      placeOfExamination: 'Медицинский центр "Волна"',
-    },
-    {
-      student: 'Зубенко Михаил Петрович',
-      dateOfBirth: '14/12/1999',
-      sportType: 'Футбол',
-      qualification: '2-й разряд',
-      specification: 'футбол',
-      dateOfExamination: '21.11.2020',
-      placeOfExamination: 'Медицинский центр "Волна"',
-    },
-    {
-      student: 'Зубенко Михаил Петрович',
-      dateOfBirth: '14/12/1999',
-      sportType: 'Рукабол',
-      qualification: '2-й разряд',
-      specification: 'футбол',
-      dateOfExamination: '21.11.2020',
-      placeOfExamination: 'Медицинский центр "Волна"',
-    },
-    {
-      student: 'Зубенко Михаил Петрович',
-      dateOfBirth: '14/12/1999',
-      sportType: 'Футбол',
-      qualification: '1-й разряд',
-      specification: 'футбол',
-      dateOfExamination: '21.11.2020',
-      placeOfExamination: 'Медицинский центр "Волна"',
-    },
-  ]
+  get headers () {
+    return [
+      {
+        text: 'ФИО',
+        align: 'start',
+        sortable: false,
+        value: 'student',
+      },
+      { text: 'Дата рождения', value: 'dateOfBirth' },
+      { 
+        text: 'Вид спорта',
+        value: 'sportType',
+        filter: (value: string) => {
+          if (!this.sportType) return true
+          if (this.sportType === 'Любой') {
+            this.sportType = ''
+            return true
+          }
+
+          return value === this.sportType
+        },
+      },
+      { text: 'Квалификация', value: 'qualification' },
+      { text: 'Специализация', value: 'specification' },
+      { text: 'Дата обследования', value: 'dateOfExamination' },
+      { text: 'Место обследования', value: 'placeOfExamination' },
+    ]
+  }
 }
 </script>

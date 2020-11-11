@@ -1,0 +1,47 @@
+export const students = [
+  {
+    student: 'Зубенко Михаил Петрович',
+    dateOfBirth: '14/12/1999',
+    sportType: 'Футбол',
+    qualification: '1-й разряд',
+    specification: 'футбол',
+    dateOfExamination: '21.11.2020',
+    placeOfExamination: 'Медицинский центр "Волна"',
+  },
+  {
+    student: 'Зубенко Михаил Петрович',
+    dateOfBirth: '14/12/1999',
+    sportType: 'Рукабол',
+    qualification: '1-й разряд',
+    specification: 'футбол',
+    dateOfExamination: '21.11.2020',
+    placeOfExamination: 'Медицинский центр "Волна"',
+  },
+  {
+    student: 'Зубенко Михаил Петрович',
+    dateOfBirth: '14/12/1999',
+    sportType: 'Футбол',
+    qualification: '2-й разряд',
+    specification: 'футбол',
+    dateOfExamination: '21.11.2020',
+    placeOfExamination: 'Медицинский центр "Волна"',
+  },
+  {
+    student: 'Зубенко Михаил Петрович',
+    dateOfBirth: '14/12/1999',
+    sportType: 'Рукабол',
+    qualification: '2-й разряд',
+    specification: 'футбол',
+    dateOfExamination: '21.11.2020',
+    placeOfExamination: 'Медицинский центр "Волна"',
+  },
+  {
+    student: 'Зубенко Михаил Петрович',
+    dateOfBirth: '14/12/1999',
+    sportType: 'Футбол',
+    qualification: '1-й разряд',
+    specification: 'футбол',
+    dateOfExamination: '21.11.2020',
+    placeOfExamination: 'Медицинский центр "Волна"',
+  }
+]
